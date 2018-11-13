@@ -1,4 +1,4 @@
-package com.example.sergiomoral.intelygenz;
+package com.example.sergiomoral.rss_feed;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

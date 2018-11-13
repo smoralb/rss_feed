@@ -1,4 +1,4 @@
-package com.example.sergiomoral.intelygenz;
+package com.example.sergiomoral.rss_feed;
 
 import org.junit.Test;
 

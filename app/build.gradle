@@ -25,4 +25,29 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //Dagger 2
+    implementation 'com.google.dagger:dagger:2.18'
+    implementation "com.google.dagger:dagger-android-support:2.18"
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.18'
+    //Butterknife
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+    //Retrofit 2
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    //RecyclerView
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    //Asyncjob
+    implementation 'com.arasthel:asyncjob-library:1.0.3'
+    //BlurDialogFragment
+    implementation 'fr.tvbarthel.blurdialogfragment:lib:2.2.0'
+    //CardView
+    implementation 'com.android.support:cardview-v7:28.0.0'
 }
