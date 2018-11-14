@@ -2,14 +2,12 @@ package com.example.sergiomoral.rss_feed.presentation.ui.main.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +33,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.test, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_feed, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -62,7 +60,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         TextView mTitle;
         TextView mDescription;
         ImageView mThubnail;
-        LinearLayout mParent;
+        CardView mParent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,13 +78,20 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                     .into(mThubnail);
 
             mTitle.setText(item.getTitle());
-            mDescription.setText(item.getDescription());
+            mDescription.setText(getDescription(item.getDescription()));
             mParent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     itemListener.showDetails(item);
                 }
             });
+        }
+
+        private String getDescription(String description) {
+
+            String separator = ">";
+            String[] desc = description.split(separator);
+            return desc[1].trim();
         }
     }
 }
