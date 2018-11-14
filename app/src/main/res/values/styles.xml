@@ -8,4 +8,98 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomTextWhite" parent="android:Widget.TextView">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="CustomTextBlack" parent="android:Widget.TextView">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="CustomTextBlackXS" parent="CustomTextBlack">
+        <item name="android:textSize">@dimen/text_dimen_xs</item>
+    </style>
+
+    <style name="CustomTextWhiteXS" parent="CustomTextWhite">
+        <item name="android:textSize">@dimen/text_dimen_xs</item>
+    </style>
+
+    <style name="CustomTextBlackXSBold" parent="CustomTextBlackXS">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomTextWhiteXSBold" parent="CustomTextWhiteXS">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="CustomTextBlackS" parent="CustomTextBlack">
+        <item name="android:textSize">@dimen/text_dimen_s</item>
+    </style>
+
+    <style name="CustomTextWhiteS" parent="CustomTextWhite">
+        <item name="android:textSize">@dimen/text_dimen_s</item>
+    </style>
+
+    <style name="CustomTextBlackSBold" parent="CustomTextBlackS">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomTextWhiteSBold" parent="CustomTextWhiteS">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+
+    <style name="CustomTextBlackM" parent="CustomTextBlack">
+        <item name="android:textSize">@dimen/text_dimen_m</item>
+    </style>
+
+    <style name="CustomTextWhiteM" parent="CustomTextWhite">
+        <item name="android:textSize">@dimen/text_dimen_m</item>
+    </style>
+
+    <style name="CustomTextBlackMBold" parent="CustomTextBlackM">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomTextWhiteMBold" parent="CustomTextWhiteM">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="CustomTextBlackL" parent="CustomTextBlack">
+        <item name="android:textSize">@dimen/text_dimen_l</item>
+    </style>
+
+    <style name="CustomTextWhiteL" parent="CustomTextWhite">
+        <item name="android:textSize">@dimen/text_dimen_l</item>
+    </style>
+
+    <style name="CustomTextBlackLBold" parent="CustomTextBlackL">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomTextWhiteLBold" parent="CustomTextWhiteL">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="CustomTextBlackXL" parent="CustomTextBlack">
+        <item name="android:textSize">@dimen/text_dimen_xl</item>
+    </style>
+
+    <style name="CustomTextWhiteXL" parent="CustomTextWhite">
+        <item name="android:textSize">@dimen/text_dimen_m</item>
+    </style>
+
+    <style name="CustomTextBlackXLBold" parent="CustomTextBlackXL">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomTextWhiteXLBold" parent="CustomTextWhiteXL">
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

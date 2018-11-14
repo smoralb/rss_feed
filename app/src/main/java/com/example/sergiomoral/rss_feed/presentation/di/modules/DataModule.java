@@ -21,19 +21,19 @@ public class DataModule {
 
     @Provides
     @Singleton
-    ListMapper<ApiFeed, Feed> providesApiContributorMapper(ApiFeedMapper apiFeedMapper) {
+    ListMapper<ApiFeed, Feed> providesApiFeedMapper(ApiFeedMapper apiFeedMapper) {
         return new ListMapper<>(apiFeedMapper);
     }
 
     @Provides
     @Singleton
-    ListMapper<ApiItems, Item> providesApiForkMapper(ApiItemsMapper apiItemsMapper) {
+    ListMapper<ApiItems, Item> providesApiItemsMapper(ApiItemsMapper apiItemsMapper) {
         return new ListMapper<>(apiItemsMapper);
     }
 
     @Provides
     @Singleton
-    ListMapper<ApiWrapper, Wrapper> providesApiIssueMapper(ApiWrapperMapper apiWrapperMapper) {
+    ListMapper<ApiWrapper, Wrapper> providesApiWrapperMapper(ApiWrapperMapper apiWrapperMapper) {
         return new ListMapper<>(apiWrapperMapper);
     }
 }

@@ -3,6 +3,7 @@ package com.example.sergiomoral.rss_feed.presentation;
 import android.app.Application;
 
 import com.example.sergiomoral.rss_feed.presentation.di.componentes.AppComponent;
+import com.example.sergiomoral.rss_feed.presentation.di.componentes.DaggerAppComponent;
 import com.example.sergiomoral.rss_feed.presentation.di.modules.AppModule;
 
 public class RssApp extends Application {

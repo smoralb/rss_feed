@@ -2,25 +2,48 @@ package com.example.sergiomoral.rss_feed.presentation.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.example.sergiomoral.rss_feed.R;
+import com.example.sergiomoral.rss_feed.domain.entities.Item;
 import com.example.sergiomoral.rss_feed.domain.entities.Wrapper;
 import com.example.sergiomoral.rss_feed.presentation.base.BaseActivity;
-import com.example.sergiomoral.rss_feed.presentation.base.BaseFragment;
-import com.example.sergiomoral.rss_feed.presentation.ui.feedlist.FeedListFragment;
-import com.example.sergiomoral.rss_feed.presentation.ui.main.manager.ManagerView;
+import com.example.sergiomoral.rss_feed.presentation.di.componentes.DaggerActivityComponent;
+import com.example.sergiomoral.rss_feed.presentation.presenter.main.MainPresenter;
+import com.example.sergiomoral.rss_feed.presentation.ui.main.adapter.ItemsAdapter;
 import com.example.sergiomoral.rss_feed.utils.Constants;
+
+import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements MainView, ManagerView, BaseFragment.OnFragmentViewListener {
+public class MainActivity extends BaseActivity implements MainView, ItemsAdapter.OnItemListener{
+
+    @Inject
+    MainPresenter mPresenter;
 
     @BindView(R.id.tv_title_name)
     TextView mTootlbarTitle;
+    @BindView(R.id.rv_items_list)
+    RecyclerView mRecyclerView;
 
     private static final String TAG = "MainActivity";
+    private ArrayList<Item> itemsArrayList;
+    private Wrapper wrapper;
+    private ItemsAdapter mAdapter;
+    LinearLayoutManager mLayoutManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initData();
+    }
 
     public static void open(Context context, Wrapper response) {
         Log.d(TAG, "open: MainActivity");
@@ -31,17 +54,33 @@ public class MainActivity extends BaseActivity implements MainView, ManagerView,
 
     @Override
     protected void attachViewToPresenter() {
-
+        mPresenter.attachView(this);
     }
 
     @Override
     protected void initInjector() {
+        DaggerActivityComponent.builder()
+                .appComponent(getAppComponent())
+                .activityModule(getActivityModule())
+                .build().inject(this);
+    }
 
+    private Wrapper getData() {
+        return getIntent().getParcelableExtra(Constants.NEWS);
     }
 
     @Override
     protected void initUI() {
+    }
 
+    private void initData() {
+        itemsArrayList = new ArrayList<>();
+        wrapper = getData();
+        itemsArrayList.addAll(wrapper.getItems());
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new ItemsAdapter(itemsArrayList, MainActivity.this, this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -49,18 +88,9 @@ public class MainActivity extends BaseActivity implements MainView, ManagerView,
         return R.layout.activity_main;
     }
 
-    @Override
-    public void loadFeedList() {
-        // TODO: 13/11/2018 Seteo el fragment inicial
-        FeedListFragment feedListFragment;
-    }
-
 
     @Override
-    public void onFragmentViewCreated(BaseFragment fragment) {
-        int fragmentTitle = fragment.getFragmentTitleRes();
-        if (fragmentTitle != 0) {
-            mTootlbarTitle.setText(fragmentTitle);
-        }
+    public void showDetails(Item item) {
+        // TODO: 14/11/2018 Manadar a detalles
     }
 }

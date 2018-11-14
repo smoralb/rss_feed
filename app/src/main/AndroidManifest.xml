@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.sergiomoral.rss_feed">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".presentation.RssApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,13 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.sergiomoral.rss_feed.MainActivity">
+        <activity android:name=".presentation.ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.ui.main.MainActivity"/>
     </application>
 
 </manifest>

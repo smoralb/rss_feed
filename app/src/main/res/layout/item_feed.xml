@@ -8,8 +8,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/iv_thubnail"
-        android:layout_width="@dimen/dimen_m"
-        android:layout_height="@dimen/dimen_m"
+        android:layout_width="@dimen/dimen_s"
+        android:layout_height="@dimen/dimen_s"
         android:layout_margin="@dimen/spacing_xs"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -18,19 +18,24 @@
 
     <TextView
         android:id="@+id/tv_title"
-        style="@style/CustomTextBlackLBold"
+        style="@style/CustomTextBlackMBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_m"
+        android:layout_marginStart="@dimen/spacing_xs"
+        android:layout_marginEnd="@dimen/spacing_m"
+        android:ellipsize="end"
+        android:maxLines="1"
         app:layout_constraintLeft_toRightOf="@id/iv_thubnail"
+        app:layout_constraintRight_toLeftOf="@id/iv_more"
         app:layout_constraintTop_toTopOf="@id/iv_thubnail"
         tools:text="Title" />
 
     <TextView
         android:id="@+id/tv_description"
-        style="@style/CustomTextBlackM"
+        style="@style/CustomTextBlackS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_m"
         android:maxLines="2"
         app:layout_constraintLeft_toLeftOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
@@ -38,6 +43,7 @@
 
 
     <ImageView
+        android:id="@+id/iv_more"
         android:layout_width="@dimen/dimen_small"
         android:layout_height="@dimen/dimen_small"
         android:layout_marginEnd="@dimen/spacing_xs"

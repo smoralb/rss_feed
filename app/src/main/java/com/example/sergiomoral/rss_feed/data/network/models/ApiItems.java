@@ -14,7 +14,7 @@ public class ApiItems {
     private String link;
     @SerializedName("author")
     private String author;
-    @SerializedName("thubnail")
+    @SerializedName("thumbnail")
     private String thubnail;
     @SerializedName("description")
     private String description;

@@ -5,6 +5,8 @@ import android.os.Looper;
 
 import com.example.sergiomoral.rss_feed.domain.executor.InteractorExecutor;
 import com.example.sergiomoral.rss_feed.domain.executor.MainThreadExecutor;
+import com.example.sergiomoral.rss_feed.presentation.executor.InteractorExecutorImp;
+import com.example.sergiomoral.rss_feed.presentation.executor.MainThreadExecutorImp;
 
 import javax.inject.Singleton;
 

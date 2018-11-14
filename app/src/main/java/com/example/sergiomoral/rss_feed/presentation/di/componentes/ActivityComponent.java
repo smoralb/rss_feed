@@ -5,7 +5,6 @@ import android.content.Context;
 
 import com.example.sergiomoral.rss_feed.presentation.di.modules.ActivityModule;
 import com.example.sergiomoral.rss_feed.presentation.di.qualifiers.PerActivity;
-import com.example.sergiomoral.rss_feed.presentation.ui.feedlist.FeedListFragment;
 import com.example.sergiomoral.rss_feed.presentation.ui.main.MainActivity;
 import com.example.sergiomoral.rss_feed.presentation.ui.splash.SplashActivity;
 
@@ -23,5 +22,4 @@ public interface ActivityComponent {
 
     void inject(MainActivity mainActivity);
 
-    void inject(FeedListFragment feedListFragment);
 }

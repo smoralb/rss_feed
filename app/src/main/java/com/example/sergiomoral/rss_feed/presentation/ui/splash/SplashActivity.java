@@ -2,10 +2,10 @@ package com.example.sergiomoral.rss_feed.presentation.ui.splash;
 
 import android.os.Bundle;
 
-import com.example.sergiomoral.rss_feed.presentation.ui.MainActivity;
 import com.example.sergiomoral.rss_feed.R;
 import com.example.sergiomoral.rss_feed.domain.entities.Wrapper;
 import com.example.sergiomoral.rss_feed.presentation.base.BaseActivity;
+import com.example.sergiomoral.rss_feed.presentation.di.componentes.DaggerActivityComponent;
 import com.example.sergiomoral.rss_feed.presentation.presenter.splash.SplashPresenter;
 import com.example.sergiomoral.rss_feed.presentation.ui.main.MainActivity;
 
@@ -20,17 +20,17 @@ public class SplashActivity extends BaseActivity implements SplashView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.getNews();
     }
 
     @Override
     protected void attachViewToPresenter() {
-
+        mPresenter.attachView(this);
     }
 
     @Override
     protected void initInjector() {
-        DaggerActivitycomponent.builder()
+
+        DaggerActivityComponent.builder()
                 .appComponent(getAppComponent())
                 .activityModule(getActivityModule())
                 .build().inject(this);
@@ -38,7 +38,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     @Override
     protected void initUI() {
-
+        mPresenter.getNews();
     }
 
     @Override

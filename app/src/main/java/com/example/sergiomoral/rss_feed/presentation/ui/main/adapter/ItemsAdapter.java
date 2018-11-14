@@ -1,13 +1,15 @@
-package com.example.sergiomoral.rss_feed.presentation.ui.feedlist.adapter;
+package com.example.sergiomoral.rss_feed.presentation.ui.main.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -16,7 +18,6 @@ import com.example.sergiomoral.rss_feed.domain.entities.Item;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
@@ -34,7 +35,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_feed, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.test, viewGroup, false);
         return new ViewHolder(view);
     }
 
@@ -58,17 +59,17 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_title)
         TextView mTitle;
-        @BindView(R.id.tv_description)
         TextView mDescription;
-        @BindView(R.id.iv_thubnail)
         ImageView mThubnail;
-        @BindView(R.id.parent_layout)
-        ConstraintLayout mParent;
+        LinearLayout mParent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.mTitle = itemView.findViewById(R.id.tv_title);
+            this.mDescription = itemView.findViewById(R.id.tv_description);
+            this.mThubnail = itemView.findViewById(R.id.iv_thubnail);
+            this.mParent = itemView.findViewById(R.id.parent_layout);
         }
 
         public void bind(final Item item) {

@@ -1,6 +1,7 @@
 package com.example.sergiomoral.rss_feed.presentation.di.modules;
 
 import com.example.sergiomoral.rss_feed.data.network.ApiService;
+import com.example.sergiomoral.rss_feed.data.network.NetworkDataSourceImp;
 import com.example.sergiomoral.rss_feed.domain.repository.datasource.NetworkDataSource;
 import com.example.sergiomoral.rss_feed.presentation.di.qualifiers.EndPoint;
 import com.example.sergiomoral.rss_feed.utils.Constants;

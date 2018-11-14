@@ -5,6 +5,11 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
+import com.example.sergiomoral.rss_feed.presentation.RssApp;
+import com.example.sergiomoral.rss_feed.presentation.di.componentes.AppComponent;
+import com.example.sergiomoral.rss_feed.presentation.di.modules.ActivityModule;
+import com.example.sergiomoral.rss_feed.presentation.dialogs.DialogManager;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
@@ -14,10 +19,6 @@ public abstract class BaseActivity extends Activity implements BaseView {
     @Inject
     DialogManager mDialogManager;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +38,12 @@ public abstract class BaseActivity extends Activity implements BaseView {
 
     @Override
     public void showLoading() {
-        mDialogManager.showLoading();
+        //mDialogManager.showLoading();
     }
 
     @Override
     public void hideLoading() {
-        mDialogManager.hideLoading();
+        //mDialogManager.hideLoading();
     }
 
     protected ActivityModule getActivityModule() {
@@ -50,7 +51,7 @@ public abstract class BaseActivity extends Activity implements BaseView {
     }
 
     protected AppComponent getAppComponent() {
-        return ((RssFedActivity) getApplication()).getAppComponent();
+        return ((RssApp) getApplication()).getAppComponent();
     }
 
 
@@ -61,4 +62,5 @@ public abstract class BaseActivity extends Activity implements BaseView {
     protected abstract void initUI();
 
     public abstract int getLayoutId();
+}
 

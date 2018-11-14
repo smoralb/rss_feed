@@ -1,19 +1,25 @@
 package com.example.sergiomoral.rss_feed.data.network.mapper;
 
-import com.example.sergiomoral.rss_feed.data.network.models.ApiFeed;
 import com.example.sergiomoral.rss_feed.data.network.models.ApiItems;
 import com.example.sergiomoral.rss_feed.data.network.models.ApiWrapper;
-import com.example.sergiomoral.rss_feed.domain.entities.Feed;
 import com.example.sergiomoral.rss_feed.domain.entities.Item;
 import com.example.sergiomoral.rss_feed.domain.entities.Wrapper;
 import com.example.sergiomoral.rss_feed.domain.mapper.ListMapper;
 import com.example.sergiomoral.rss_feed.domain.mapper.Mapper;
 
+import javax.inject.Inject;
+
 
 public class ApiWrapperMapper implements Mapper<ApiWrapper, Wrapper> {
 
-    Mapper<ApiFeed, Feed> apiFeedMapper;
+    ApiFeedMapper apiFeedMapper;
     ListMapper<ApiItems, Item> apiITemMapper;
+
+    @Inject
+    public ApiWrapperMapper(ApiFeedMapper apiFeedMapper, ListMapper<ApiItems, Item> apiITemMapper) {
+        this.apiFeedMapper = apiFeedMapper;
+        this.apiITemMapper = apiITemMapper;
+    }
 
     @Override
     public Wrapper map(ApiWrapper model) {
