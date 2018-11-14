@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/tb_custom"
+        layout="@layout/toolbar_custom" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_thumbnail"
+                android:layout_width="@dimen/dimen_l"
+                android:layout_height="@dimen/dimen_l"
+                android:layout_margin="@dimen/spacing_s"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/colorPrimary" />
+
+            <ImageView
+                android:id="@+id/iv_link_details"
+                android:layout_width="@dimen/dimen_small"
+                android:layout_height="@dimen/dimen_small"
+                android:src="@drawable/ic_external_link_symbol"
+                android:tint="@android:color/black"
+                app:layout_constraintLeft_toRightOf="@id/tv_author_details"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_author_details" />
+
+            <TextView
+                android:id="@+id/tv_author_details"
+                style="@style/CustomTextBlackLBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_s"
+                app:layout_constraintLeft_toRightOf="@id/iv_thumbnail"
+                app:layout_constraintTop_toTopOf="@id/iv_thumbnail"
+                tools:text="Author" />
+
+            <TextView
+                style="@style/CustomTextBlackM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_m"
+                app:layout_constraintLeft_toLeftOf="@id/tv_author_details"
+                app:layout_constraintLeft_toRightOf="@id/iv_thumbnail"
+                app:layout_constraintTop_toBottomOf="@id/tv_author_details"
+                tools:text="Fecha" />
+
+            <TextView
+                android:id="@+id/tv_title_details"
+                style="@style/CustomTextBlackLBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_s"
+                android:layout_marginTop="@dimen/spacing_m"
+                android:layout_marginEnd="@dimen/spacing_s"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_thumbnail"
+                tools:text="Loren Ipsum" />
+
+            <TextView
+                android:id="@+id/tv_description_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_s"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_details"
+                tools:text="Loren Ipsum" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

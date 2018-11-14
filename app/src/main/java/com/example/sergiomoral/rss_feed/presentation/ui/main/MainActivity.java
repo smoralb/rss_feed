@@ -92,5 +92,6 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
     @Override
     public void showDetails(Item item) {
         // TODO: 14/11/2018 Manadar a detalles
+
     }
 }
