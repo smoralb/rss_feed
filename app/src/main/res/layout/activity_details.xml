@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_thumbnail"
+                android:id="@+id/iv_thumbnail_details"
                 android:layout_width="@dimen/dimen_l"
                 android:layout_height="@dimen/dimen_l"
                 android:layout_margin="@dimen/spacing_s"
@@ -34,6 +34,7 @@
                 android:layout_height="@dimen/dimen_small"
                 android:src="@drawable/ic_external_link_symbol"
                 android:tint="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="@id/tv_date_details"
                 app:layout_constraintLeft_toRightOf="@id/tv_author_details"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_author_details" />
@@ -44,23 +45,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_s"
-                app:layout_constraintLeft_toRightOf="@id/iv_thumbnail"
-                app:layout_constraintTop_toTopOf="@id/iv_thumbnail"
+                app:layout_constraintLeft_toRightOf="@id/iv_thumbnail_details"
+                app:layout_constraintTop_toTopOf="@id/iv_thumbnail_details"
                 tools:text="Author" />
 
             <TextView
+                android:id="@+id/tv_date_details"
                 style="@style/CustomTextBlackM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_m"
                 app:layout_constraintLeft_toLeftOf="@id/tv_author_details"
-                app:layout_constraintLeft_toRightOf="@id/iv_thumbnail"
+                app:layout_constraintLeft_toRightOf="@id/iv_thumbnail_details"
                 app:layout_constraintTop_toBottomOf="@id/tv_author_details"
                 tools:text="Fecha" />
 
             <TextView
+                android:id="@+id/tv_categories_details"
+                style="@style/CustomTextBlackS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:alpha="0.4"
+                app:layout_constraintLeft_toLeftOf="@id/iv_thumbnail_details"
+                app:layout_constraintTop_toBottomOf="@id/iv_thumbnail_details"
+                tools:text="World" />
+
+            <TextView
                 android:id="@+id/tv_title_details"
-                style="@style/CustomTextBlackLBold"
+                style="@style/CustomTextBlackXLBold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_s"
@@ -68,11 +81,12 @@
                 android:layout_marginEnd="@dimen/spacing_s"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_thumbnail"
+                app:layout_constraintTop_toBottomOf="@id/iv_thumbnail_details"
                 tools:text="Loren Ipsum" />
 
             <TextView
                 android:id="@+id/tv_description_details"
+                style="@style/CustomTextBlackL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_s"

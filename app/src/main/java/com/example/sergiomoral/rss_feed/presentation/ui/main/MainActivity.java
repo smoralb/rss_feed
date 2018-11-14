@@ -43,7 +43,6 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData();
     }
 
     public static void open(Context context, Wrapper response) {
@@ -72,6 +71,7 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
 
     @Override
     protected void initUI() {
+        initData();
     }
 
     private void initData() {
@@ -82,6 +82,7 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new ItemsAdapter(itemsArrayList, MainActivity.this, this);
         mRecyclerView.setAdapter(mAdapter);
+
     }
 
     @Override
@@ -92,7 +93,6 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
 
     @Override
     public void showDetails(Item item) {
-        // TODO: 14/11/2018 Manadar a detalles
         DetailsActivity.open(this, item);
     }
 }

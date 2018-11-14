@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.sergiomoral.rss_feed.R;
 import com.example.sergiomoral.rss_feed.domain.entities.Item;
+import com.example.sergiomoral.rss_feed.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -78,20 +79,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                     .into(mThubnail);
 
             mTitle.setText(item.getTitle());
-            mDescription.setText(getDescription(item.getDescription()));
+            mDescription.setText(Utils.getDescriptionFormatted(item.getDescription()));
             mParent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     itemListener.showDetails(item);
                 }
             });
-        }
-
-        private String getDescription(String description) {
-
-            String separator = ">";
-            String[] desc = description.split(separator);
-            return desc[1].trim();
         }
     }
 }
