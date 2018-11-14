@@ -20,9 +20,11 @@ import com.example.sergiomoral.rss_feed.presentation.presenter.main.MainPresente
 import com.example.sergiomoral.rss_feed.presentation.ui.details.DetailsActivity;
 import com.example.sergiomoral.rss_feed.presentation.ui.main.adapter.ItemsAdapter;
 import com.example.sergiomoral.rss_feed.utils.Constants;
+import com.example.sergiomoral.rss_feed.utils.CustomComparator;
 import com.example.sergiomoral.rss_feed.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.inject.Inject;
 
@@ -92,6 +94,7 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
     private void initParams() {
         itemsArrayList = new ArrayList<>();
         wrapper = getData();
+        Collections.sort(wrapper.getItems(), new CustomComparator());
         itemsArrayList.addAll(wrapper.getItems());
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);

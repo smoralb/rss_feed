@@ -14,6 +14,7 @@ public class Item implements Parcelable {
     private String thubnail;
     private String description;
     private List<String> categories;
+    private String id;
 
     private Item(Builder builder) {
         setTitle(builder.title);
@@ -23,6 +24,7 @@ public class Item implements Parcelable {
         setThubnail(builder.thubnail);
         setDescription(builder.description);
         setCategories(builder.categories);
+        setId(builder.id);
     }
 
 
@@ -40,6 +42,7 @@ public class Item implements Parcelable {
         dest.writeString(this.thubnail);
         dest.writeString(this.description);
         dest.writeStringList(this.categories);
+        dest.writeString(this.id);
     }
 
     public Item() {
@@ -53,6 +56,7 @@ public class Item implements Parcelable {
         this.thubnail = in.readString();
         this.description = in.readString();
         this.categories = in.createStringArrayList();
+        this.id = in.readString();
     }
 
     public static final Creator<Item> CREATOR = new Creator<Item>() {
@@ -123,6 +127,14 @@ public class Item implements Parcelable {
         this.categories = categories;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
     public static final class Builder {
         private String title;
@@ -132,6 +144,7 @@ public class Item implements Parcelable {
         private String thubnail;
         private String description;
         private List<String> categories;
+        private String id;
 
         public Builder() {
         }
@@ -168,6 +181,11 @@ public class Item implements Parcelable {
 
         public Builder categories(List<String> val) {
             categories = val;
+            return this;
+        }
+
+        public Builder id(String val) {
+            id = val;
             return this;
         }
 

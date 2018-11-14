@@ -26,6 +26,7 @@ public class ApiItemsMapper implements Mapper<ApiItems, Item> {
                 .link(model.getLink())
                 .thubnail(model.getThubnail())
                 .title(model.getTitle())
+                .id(model.getId())
                 .build();
     }
 
@@ -43,6 +44,7 @@ public class ApiItemsMapper implements Mapper<ApiItems, Item> {
                 .link(model.getLink())
                 .thubnail(model.getThubnail())
                 .title(model.getTitle())
+                .id(model.getId())
                 .build();
     }
 }

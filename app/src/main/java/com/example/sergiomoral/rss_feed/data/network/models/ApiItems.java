@@ -20,6 +20,8 @@ public class ApiItems {
     private String description;
     @SerializedName("categories")
     private List<String> categories;
+    @SerializedName("guid")
+    private String id;
 
     private ApiItems(Builder builder) {
         title = builder.title;
@@ -29,6 +31,7 @@ public class ApiItems {
         thubnail = builder.thubnail;
         description = builder.description;
         categories = builder.categories;
+        id = builder.id;
     }
 
 
@@ -40,6 +43,7 @@ public class ApiItems {
         private String thubnail;
         private String description;
         private List<String> categories;
+        private String id;
 
         public Builder() {
         }
@@ -79,6 +83,11 @@ public class ApiItems {
             return this;
         }
 
+        public Builder id(String val) {
+            id = val;
+            return this;
+        }
+
         public ApiItems build() {
             return new ApiItems(this);
         }
@@ -110,5 +119,9 @@ public class ApiItems {
 
     public List<String> getCategories() {
         return categories;
+    }
+
+    public String getId() {
+        return id;
     }
 }
