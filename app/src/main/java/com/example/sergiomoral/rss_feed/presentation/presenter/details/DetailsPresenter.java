@@ -2,6 +2,7 @@ package com.example.sergiomoral.rss_feed.presentation.presenter.details;
 
 import com.example.sergiomoral.rss_feed.presentation.presenter.Presenter;
 import com.example.sergiomoral.rss_feed.presentation.ui.details.DetailsView;
+import com.example.sergiomoral.rss_feed.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -27,4 +28,9 @@ public class DetailsPresenter implements Presenter<DetailsView> {
         }
         mView.showCategories(categories);
     }
+
+    public void viewVisibility(int visibility) {
+        mView.setVisibility(Utils.getDrawerVisibility(visibility));
+    }
+
 }

@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.sergiomoral.rss_feed.R;
@@ -17,12 +20,14 @@ import com.example.sergiomoral.rss_feed.presentation.presenter.main.MainPresente
 import com.example.sergiomoral.rss_feed.presentation.ui.details.DetailsActivity;
 import com.example.sergiomoral.rss_feed.presentation.ui.main.adapter.ItemsAdapter;
 import com.example.sergiomoral.rss_feed.utils.Constants;
+import com.example.sergiomoral.rss_feed.utils.Utils;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainView, ItemsAdapter.OnItemListener {
 
@@ -33,16 +38,24 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
     TextView mTootlbarTitle;
     @BindView(R.id.rv_items_list)
     RecyclerView mRecyclerView;
+    @BindView(R.id.iv_back)
+    ImageView mBack;
+    @BindView(R.id.tb_filter)
+    LinearLayout mSearchToolbar;
+    @BindView(R.id.et_filter)
+    EditText mFilter;
 
     private static final String TAG = "MainActivity";
     private ArrayList<Item> itemsArrayList;
     private Wrapper wrapper;
     private ItemsAdapter mAdapter;
     LinearLayoutManager mLayoutManager;
+    private int viewVisibility = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initParams();
     }
 
     public static void open(Context context, Wrapper response) {
@@ -71,18 +84,32 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
 
     @Override
     protected void initUI() {
-        initData();
+        initVisibility();
+        initFilter();
+        initListener();
     }
 
-    private void initData() {
+    private void initParams() {
         itemsArrayList = new ArrayList<>();
         wrapper = getData();
         itemsArrayList.addAll(wrapper.getItems());
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        initData();
+    }
+
+    private void initVisibility() {
+        mPresenter.viewVisibility(mBack.getVisibility());
+        mBack.setVisibility(viewVisibility);
+    }
+
+    private void initData() {
         mAdapter = new ItemsAdapter(itemsArrayList, MainActivity.this, this);
         mRecyclerView.setAdapter(mAdapter);
+    }
 
+    private void initFilter() {
+        mPresenter.filterData(mFilter);
     }
 
     @Override
@@ -90,9 +117,38 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
         return R.layout.activity_main;
     }
 
-
     @Override
     public void showDetails(Item item) {
         DetailsActivity.open(this, item);
+    }
+
+    @Override
+    public void setVisibility(int drawerVisibility) {
+        viewVisibility = drawerVisibility;
+    }
+
+    @Override
+    public void filterList(String data) {
+        mPresenter.filterText(itemsArrayList, data);
+    }
+
+    @Override
+    public void updataData(ArrayList<Item> itemList) {
+        mAdapter.filterList(itemList);
+    }
+
+    @Override
+    public void hideKeyboard() {
+        Utils.closeKeyboard(this);
+    }
+
+    @OnClick(R.id.iv_search)
+    public void filterData() {
+        mPresenter.viewVisibility(mSearchToolbar.getVisibility());
+        mSearchToolbar.setVisibility(viewVisibility);
+    }
+
+    private void initListener() {
+        mPresenter.keyBoardListener(mFilter);
     }
 }

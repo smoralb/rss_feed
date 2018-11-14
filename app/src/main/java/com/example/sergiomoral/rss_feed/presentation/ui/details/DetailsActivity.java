@@ -44,6 +44,10 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     TextView mDate;
     @BindView(R.id.tv_categories_details)
     TextView mCategories;
+    @BindView(R.id.iv_search)
+    ImageView mSearch;
+
+    private int viewVisibility = 0;
 
     private Item mItem;
     private ArrayList<String> mCategoriesArrayList;
@@ -71,6 +75,12 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     @Override
     protected void initUI() {
         initParams();
+        initVisibility();
+    }
+
+    private void initVisibility() {
+        mPresenter.viewVisibility(mSearch.getVisibility());
+        mSearch.setVisibility(viewVisibility);
     }
 
     private void initParams() {
@@ -105,5 +115,15 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     @Override
     public void showCategories(String categories) {
         mCategories.setText(categories);
+    }
+
+    @Override
+    public void setVisibility(int drawerVisibility) {
+        viewVisibility = drawerVisibility;
+    }
+
+    @OnClick(R.id.iv_back)
+    public void goBack(){
+        finish();
     }
 }

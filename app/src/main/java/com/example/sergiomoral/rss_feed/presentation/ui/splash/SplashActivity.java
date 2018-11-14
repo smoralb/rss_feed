@@ -49,5 +49,6 @@ public class SplashActivity extends BaseActivity implements SplashView {
     @Override
     public void showFeed(Wrapper response) {
         MainActivity.open(this, response);
+        finish();
     }
 }

@@ -21,12 +21,12 @@ import java.util.ArrayList;
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
     private static final String TAG = "ItemsAdapter";
-    public ArrayList<Item> itemArrayList;
+    public ArrayList<Item> items;
     private Context context;
     private OnItemListener itemListener;
 
     public ItemsAdapter(ArrayList<Item> itemArrayList, Context context, OnItemListener itemListener) {
-        this.itemArrayList = itemArrayList;
+        this.items = itemArrayList;
         this.context = context;
         this.itemListener = itemListener;
     }
@@ -40,20 +40,25 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        if (itemArrayList.get(i) != null) {
-            viewHolder.bind(itemArrayList.get(i));
+        if (items.get(i) != null) {
+            viewHolder.bind(items.get(i));
         }
     }
 
     @Override
     public int getItemCount() {
-        return itemArrayList.size();
+        return items.size();
+    }
+
+    public void filterList(ArrayList<Item> itemList) {
+        items.clear();
+        items.addAll(itemList);
+        notifyDataSetChanged();
     }
 
     public interface OnItemListener {
 
         void showDetails(Item item);
-
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
