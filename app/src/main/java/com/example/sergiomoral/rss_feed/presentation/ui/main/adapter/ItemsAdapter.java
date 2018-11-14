@@ -88,7 +88,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             mParent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    itemListener.showDetails(item);
+                    itemListener.showDetails(items.get(getAdapterPosition()));
                 }
             });
         }

@@ -54,9 +54,8 @@ public class MainPresenter implements Presenter<MainView> {
     public void filterText(ArrayList<Item> itemsArrayList, String data) {
 
         ArrayList<Item> itemList = new ArrayList<>();
-        itemList.addAll(itemsArrayList);
 
-        for (Item item : itemList) {
+        for (Item item : itemsArrayList) {
             if (item.getTitle().toLowerCase().contains(data)) {
                 itemList.add(item);
             }

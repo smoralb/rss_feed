@@ -48,16 +48,8 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
     ImageView mSearch;
 
     private int viewVisibility = 0;
-
     private Item mItem;
     private ArrayList<String> mCategoriesArrayList;
-
-    public static void open(Context context, Item item) {
-        Log.d(TAG, "open: DetailsActivity");
-        Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra(Constants.ITEM, item);
-        context.startActivity(intent);
-    }
 
     @Override
     protected void attachViewToPresenter() {
@@ -78,11 +70,6 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
         initVisibility();
     }
 
-    private void initVisibility() {
-        mPresenter.viewVisibility(mSearch.getVisibility());
-        mSearch.setVisibility(viewVisibility);
-    }
-
     private void initParams() {
         mCategoriesArrayList = new ArrayList<>();
         mItem = getData();
@@ -97,11 +84,17 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
         mPresenter.loadCategories(mCategoriesArrayList);
     }
 
-    @OnClick(R.id.iv_link_details)
-    public void gotToWebsite() {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mItem.getLink())));
+    private void initVisibility() {
+        mPresenter.viewVisibility(mSearch.getVisibility());
+        mSearch.setVisibility(viewVisibility);
     }
 
+    public static void open(Context context, Item item) {
+        Log.d(TAG, "open: DetailsActivity");
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra(Constants.ITEM, item);
+        context.startActivity(intent);
+    }
 
     @Override
     public int getLayoutId() {
@@ -122,8 +115,15 @@ public class DetailsActivity extends BaseActivity implements DetailsView {
         viewVisibility = drawerVisibility;
     }
 
+
     @OnClick(R.id.iv_back)
     public void goBack(){
         finish();
     }
+
+    @OnClick(R.id.iv_link_details)
+    public void gotToWebsite() {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(mItem.getLink())));
+    }
+
 }

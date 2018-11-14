@@ -48,23 +48,22 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
     EditText mFilter;
 
     private static final String TAG = "MainActivity";
-    private ArrayList<Item> itemsArrayList;
+    private static ArrayList<Item> itemsArrayList;
     private Wrapper wrapper;
     private ItemsAdapter mAdapter;
-    LinearLayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager;
     private int viewVisibility = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initParams();
-    }
 
-    public static void open(Context context, Wrapper response) {
-        Log.d(TAG, "open: MainActivity");
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra(Constants.NEWS, response);
-        context.startActivity(intent);
+        initParams();
+        if (getData() != null) {
+            wrapper = getData();
+            itemsArrayList.addAll(wrapper.getItems());
+            Collections.sort(itemsArrayList, new CustomComparator());
+        }
     }
 
     @Override
@@ -80,12 +79,9 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
                 .build().inject(this);
     }
 
-    private Wrapper getData() {
-        return getIntent().getParcelableExtra(Constants.NEWS);
-    }
-
     @Override
     protected void initUI() {
+        initData();
         initVisibility();
         initFilter();
         initListener();
@@ -93,12 +89,8 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
 
     private void initParams() {
         itemsArrayList = new ArrayList<>();
-        wrapper = getData();
-        Collections.sort(wrapper.getItems(), new CustomComparator());
-        itemsArrayList.addAll(wrapper.getItems());
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        initData();
     }
 
     private void initVisibility() {
@@ -115,10 +107,28 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
         mPresenter.filterData(mFilter);
     }
 
+    private void initListener() {
+        mPresenter.keyBoardListener(mFilter);
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
     }
+
+    public static void open(Context context, Wrapper response) {
+        Log.d(TAG, "open: MainActivity");
+        Intent intent = new Intent(context, MainActivity.class);
+        itemsArrayList = new ArrayList<>();
+        itemsArrayList.addAll(response.getItems());
+        intent.putExtra(Constants.NEWS, response);
+        context.startActivity(intent);
+    }
+
+    private Wrapper getData() {
+        return getIntent().getParcelableExtra(Constants.NEWS);
+    }
+
 
     @Override
     public void showDetails(Item item) {
@@ -149,9 +159,5 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
     public void filterData() {
         mPresenter.viewVisibility(mSearchToolbar.getVisibility());
         mSearchToolbar.setVisibility(viewVisibility);
-    }
-
-    private void initListener() {
-        mPresenter.keyBoardListener(mFilter);
     }
 }
