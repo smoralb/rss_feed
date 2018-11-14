@@ -14,6 +14,7 @@ import com.example.sergiomoral.rss_feed.domain.entities.Wrapper;
 import com.example.sergiomoral.rss_feed.presentation.base.BaseActivity;
 import com.example.sergiomoral.rss_feed.presentation.di.componentes.DaggerActivityComponent;
 import com.example.sergiomoral.rss_feed.presentation.presenter.main.MainPresenter;
+import com.example.sergiomoral.rss_feed.presentation.ui.details.DetailsActivity;
 import com.example.sergiomoral.rss_feed.presentation.ui.main.adapter.ItemsAdapter;
 import com.example.sergiomoral.rss_feed.utils.Constants;
 
@@ -23,7 +24,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements MainView, ItemsAdapter.OnItemListener{
+public class MainActivity extends BaseActivity implements MainView, ItemsAdapter.OnItemListener {
 
     @Inject
     MainPresenter mPresenter;
@@ -92,6 +93,6 @@ public class MainActivity extends BaseActivity implements MainView, ItemsAdapter
     @Override
     public void showDetails(Item item) {
         // TODO: 14/11/2018 Manadar a detalles
-
+        DetailsActivity.open(this, item);
     }
 }

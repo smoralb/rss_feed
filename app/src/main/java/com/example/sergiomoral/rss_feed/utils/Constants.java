@@ -6,4 +6,5 @@ public interface Constants {
     String RSS_FEED = "https://actualidad.rt.com/feeds/all.rss";
     String NEWS = "news";
     String ITEMS = "items";
+    String ITEM = "item";
 }
