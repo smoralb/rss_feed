@@ -3,4 +3,5 @@
     <!-- String for search toolbar -->
     <string name="search_repositories">Buscar repositorios...</string>
     <string name="ok">ok</string>
+    <string name="error_title">Se he producido un error</string>
 </resources>

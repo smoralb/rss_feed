@@ -39,8 +39,7 @@ public class SplashPresenter implements Presenter<SplashView> {
 
             @Override
             public void onError(Exception exception) {
-                // TODO: 13/11/2018 Mostrar error
-                //mDialogManager.showErrorMessage();
+                mDialogManager.showErrorMessage(exception.getMessage());
             }
         });
     }

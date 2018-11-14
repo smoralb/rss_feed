@@ -21,10 +21,10 @@ public class DialogManagerImp implements DialogManager {
     }
 
     @Override
-    public void showErrorMessage(String title, String message) {
+    public void showErrorMessage(String message) {
         Log.d(TAG, "showErrorMessage: Error dialog");
         AlertDialog alertDialog = new AlertDialog.Builder(mActivity).create();
-        alertDialog.setTitle(title);
+        alertDialog.setTitle(R.string.error_title);
         alertDialog.setMessage(message);
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, mActivity.getResources().getString(R.string.ok),
                 new DialogInterface.OnClickListener() {
